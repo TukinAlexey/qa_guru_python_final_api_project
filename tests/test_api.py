@@ -1,48 +1,13 @@
 import requests
 from jsonschema import validate
-import schemas
+from schemas import register_user_schemas
 
-url = 'https://reqres.in'
 register_successful_endpoint = '/api/register'
 single_user_not_found_endpoint = '/api/users/23'
 user_update_endpoint = '/api/users/2'
 user_delete_endpoint = '/api/users/2'
 user_create_endpoint = '/api/users'
 
-def test_register_successful_response_status_code_with_all_params_in_body():
-    payload = {
-    "email": "eve.holt@reqres.in",
-    "password": "pistol"
-    }
-    headers = {
-        'x-api-key': 'reqres-free-v1'
-    }
-    response = requests.post(url + register_successful_endpoint, json=payload, headers=headers)
-    assert response.status_code == 200
-
-def test_register_successful_response_status_code_with_not_all_params_in_body():
-    payload = {
-    "email": "eve.holt@reqres.in"
-}
-    headers = {
-        'x-api-key': 'reqres-free-v1'
-    }
-    response = requests.post(url + register_successful_endpoint, json=payload, headers=headers)
-    body = response.json()
-    validate(body, schema=schemas.post_register_unsuccessful)
-    assert response.status_code == 400
-
-def test_register_successful_schema_validate():
-    payload = {
-    "email": "eve.holt@reqres.in",
-    "password": "pistol"
-    }
-    headers = {
-        'x-api-key': 'reqres-free-v1'
-    }
-    response = requests.post(url + register_successful_endpoint, json=payload, headers=headers)
-    body = response.json()
-    validate(body, schema=schemas.post_register_successful)
 
 def test_single_user_not_found_endpoint_with_no_response_body():
     headers = {
