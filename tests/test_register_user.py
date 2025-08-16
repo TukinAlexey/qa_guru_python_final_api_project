@@ -11,6 +11,11 @@ from test_data.register_user_data import (register_endpoint, register_payload, r
                                           register_successful_response_body, register_unsuccessful_response_body)
 
 
+@allure.tag("API")
+@allure.label('owner', 'atukin')
+@allure.feature('API tests')
+@allure.story('Проверка метода post /api/register')
+@allure.link('https://reqres.in/', name='Testing')
 @allure.title("Проверка успешного выполнения запроса /api/register")
 def test_register_successful():
     with step("Проверка схемы запроса"):
@@ -30,6 +35,11 @@ def test_register_successful():
                       attachment_type=AttachmentType.JSON, extension="json")
 
 
+@allure.tag("API")
+@allure.label('owner', 'atukin')
+@allure.feature('API tests')
+@allure.story('Проверка метода post /api/register')
+@allure.link('https://reqres.in/', name='Testing')
 @allure.title("Проверка неуспешного выполнения запроса /api/register")
 def test_register_unsuccessful():
     with step("Проверка схемы запроса"):

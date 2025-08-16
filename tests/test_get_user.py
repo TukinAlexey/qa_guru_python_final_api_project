@@ -11,6 +11,11 @@ from test_data.get_user_data import  (get_existing_user_endpoint, get_non_existe
                             get_non_existent_user_response_body)
 
 
+@allure.tag("API")
+@allure.label('owner', 'atukin')
+@allure.feature('API tests')
+@allure.story('Проверка метода get /api/users/{user_id}')
+@allure.link('https://reqres.in/', name='Testing')
 @allure.title("Получение существующего юзера")
 def test_get_existing_user():
     with step("Отправка запроса на получение пользователя"):
@@ -27,6 +32,11 @@ def test_get_existing_user():
                       attachment_type=AttachmentType.JSON, extension="json")
 
 
+@allure.tag("API")
+@allure.label('owner', 'atukin')
+@allure.feature('API tests')
+@allure.story('Проверка метода get /api/users/{user_id}')
+@allure.link('https://reqres.in/', name='Testing')
 @allure.title("Получение несуществующего юзера")
 def test_get_non_existent_user():
     with step("Отправка запроса на получение несуществующего пользователя"):

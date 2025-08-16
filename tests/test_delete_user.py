@@ -5,6 +5,11 @@ from test_data.general_data import (base_url, headers)
 from test_data.delete_user_data import delete_user_endpoint
 
 
+@allure.tag("API")
+@allure.label('owner', 'atukin')
+@allure.feature('API tests')
+@allure.story('Проверка метода delete /api/users/{user_id}')
+@allure.link('https://reqres.in/', name='Testing')
 @allure.title("Удаление пользователя")
 def test_delete_user():
     with step("Отправка запроса на удаление пользователя"):
