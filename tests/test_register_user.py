@@ -4,7 +4,7 @@ import requests
 from jsonschema import validate
 from schemas import register_user_schemas
 from allure_commons._allure import step
-from allure_commons.types import AttachmentType
+from allure_commons.types import AttachmentType, Severity
 
 from test_data.general_data import (base_url, headers)
 from test_data.register_user_data import (register_endpoint, register_payload, register_payload_without_password,
@@ -12,10 +12,11 @@ from test_data.register_user_data import (register_endpoint, register_payload, r
 
 
 @allure.tag("API")
+@allure.severity(Severity.CRITICAL)
 @allure.label('owner', 'atukin')
 @allure.feature('API tests')
 @allure.story('Проверка метода post /api/register')
-@allure.link('https://reqres.in/', name='Testing')
+@allure.link('https://reqres.in/', name='REQRES')
 @allure.title("Проверка успешного выполнения запроса /api/register")
 def test_register_successful():
     with step("Проверка схемы запроса"):
@@ -36,10 +37,11 @@ def test_register_successful():
 
 
 @allure.tag("API")
+@allure.severity(Severity.CRITICAL)
 @allure.label('owner', 'atukin')
 @allure.feature('API tests')
 @allure.story('Проверка метода post /api/register')
-@allure.link('https://reqres.in/', name='Testing')
+@allure.link('https://reqres.in/', name='REQRES')
 @allure.title("Проверка неуспешного выполнения запроса /api/register")
 def test_register_unsuccessful():
     with step("Проверка схемы запроса"):
