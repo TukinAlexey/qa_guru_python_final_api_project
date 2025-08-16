@@ -1,4 +1,4 @@
-post_register_successful = {
+register_successful_response_schema = {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
@@ -15,7 +15,7 @@ post_register_successful = {
   ]
 }
 
-post_register_unsuccessful = {
+register_unsuccessful_response_schema = {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
@@ -28,48 +28,36 @@ post_register_unsuccessful = {
   ]
 }
 
-put_user_update = {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+
+register_successful_request_schema = {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generated schema for Root",
   "type": "object",
   "properties": {
-    "name": {
+    "email": {
       "type": "string"
     },
-    "job": {
-      "type": "string"
-    },
-    "updatedAt": {
+    "password": {
       "type": "string"
     }
   },
   "required": [
-    "name",
-    "job",
-    "updatedAt"
+    "email",
+    "password"
   ]
 }
 
-post_user_create = {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+
+register_unsuccessful_request_schema = {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generated schema for Root",
   "type": "object",
   "properties": {
-    "name": {
-      "type": "string"
-    },
-    "job": {
-      "type": "string"
-    },
-    "id": {
-      "type": "string"
-    },
-    "createdAt": {
+    "email": {
       "type": "string"
     }
   },
   "required": [
-    "name",
-    "job",
-    "id",
-    "createdAt"
+    "email"
   ]
 }
