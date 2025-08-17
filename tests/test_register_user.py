@@ -28,11 +28,8 @@ def test_register_successful(log_teardown):
         _last_responses['current_test'] = response
         with step("Логируем url и body запроса"):
             allure.attach(body=response.request.url, name="Request URL")
-            allure.attach(
-                name="Request Body",
-                body=json.dumps(register_payload, indent=4),
-                attachment_type=allure.attachment_type.JSON
-            )
+            allure.attach(name="Request Body",body=json.dumps(register_payload, indent=4),
+                          attachment_type=allure.attachment_type.JSON)
         with step("Логируем тело ответа и статус код"):
             allure.attach(body=json.dumps(response_body, indent=4, ensure_ascii=True), name="Response body",
                           attachment_type=AttachmentType.JSON, extension="json")
@@ -62,11 +59,8 @@ def test_register_unsuccessful(log_teardown):
         _last_responses['current_test'] = response
         with step("Логируем url и body запроса"):
             allure.attach(body=response.request.url, name="Request URL")
-            allure.attach(
-                name="Request Body",
-                body=json.dumps(register_payload_without_password, indent=4),
-                attachment_type=allure.attachment_type.JSON
-            )
+            allure.attach(name="Request Body",body=json.dumps(register_payload_without_password, indent=4),
+                attachment_type=allure.attachment_type.JSON)
         with step("Логируем тело ответа и статус код"):
             allure.attach(body=json.dumps(response_body, indent=4, ensure_ascii=True), name="Response body",
                           attachment_type=AttachmentType.JSON, extension="json")
