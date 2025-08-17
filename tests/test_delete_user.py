@@ -17,6 +17,10 @@ from test_data.delete_user_data import delete_user_endpoint
 def test_delete_user():
     with step("Отправка запроса на удаление пользователя"):
         response = requests.delete(base_url + delete_user_endpoint, headers=headers)
+        with step("Логируем url запроса"):
+            allure.attach(body=response.request.url, name="Request URL")
+        with step("Логируем статус код"):
+            allure.attach(body=str(response.status_code), name="Status code")
     with step("Проверка статуса ответа 204"):
         assert response.status_code == 204
     with step("Проверка отсутствия тела ответа"):

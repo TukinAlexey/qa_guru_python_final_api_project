@@ -22,15 +22,18 @@ def test_get_existing_user():
     with step("Отправка запроса на получение пользователя"):
         response = requests.get(base_url + get_existing_user_endpoint, headers=headers)
         response_body = response.json()
+        with step("Логируем url запроса"):
+            allure.attach(body=response.request.url, name="Request URL")
+        with step("Логируем тело ответа и статус код"):
+            allure.attach(body=json.dumps(response_body, indent=4, ensure_ascii=True), name="Response body",
+                          attachment_type=AttachmentType.JSON, extension="json")
+            allure.attach(body=str(response.status_code), name="Status code")
     with step("Проверка статуса ответа 200"):
         assert response.status_code == 200
     with step("Проверка значения response body"):
         assert response_body == get_existing_user_response_body
     with step("Проверка схемы ответа"):
         validate(response_body, schema=get_user_schemas.get_existing_user)
-    with step("Записываем тело ответа"):
-        allure.attach(body=json.dumps(response_body, indent=4, ensure_ascii=True), name="Response",
-                      attachment_type=AttachmentType.JSON, extension="json")
 
 
 @allure.tag("API")
@@ -44,12 +47,15 @@ def test_get_non_existent_user():
     with step("Отправка запроса на получение несуществующего пользователя"):
         response = requests.get(base_url + get_non_existent_user_endpoint, headers=headers)
         response_body = response.json()
+        with step("Логируем url запроса"):
+            allure.attach(body=response.request.url, name="Request URL")
+        with step("Логируем тело ответа и статус код"):
+            allure.attach(body=json.dumps(response_body, indent=4, ensure_ascii=True), name="Response body",
+                          attachment_type=AttachmentType.JSON, extension="json")
+            allure.attach(body=str(response.status_code), name="Status code")
     with step("Проверка статуса ответа 404"):
         assert response.status_code == 404
     with step("Проверка значения response body"):
         assert response_body == get_non_existent_user_response_body
     with step("Проверка схемы ответа"):
         validate(response_body, schema=get_user_schemas.get_non_existent_user)
-    with step("Записываем тело ответа"):
-        allure.attach(body=json.dumps(response_body, indent=4, ensure_ascii=True), name="Response",
-                      attachment_type=AttachmentType.JSON, extension="json")
