@@ -52,7 +52,7 @@ def test_register_successful(log_teardown):
 @allure.story('Проверка метода post /api/register')
 @allure.link('https://reqres.in/', name='REQRES')
 @allure.title("Проверка неуспешного выполнения запроса /api/register")
-def test_register_unsuccessful():
+def test_register_unsuccessful(log_teardown):
     with step("Проверка схемы запроса"):
         request_body = register_payload_without_password
         validate(request_body, schema=register_user_schemas.register_unsuccessful_request_schema)
