@@ -44,9 +44,8 @@ def response_attaching(response: Response, req_body):
             attachment_type=AttachmentType.JSON,
             extension="json",
         )
-    except ValueError as e:
+    except ValueError:
         # Обрабатываем случай, когда ответ не является JSON
-        print(f"При выполнении запроса получен пустой ответ: {e}")
         allure.attach(
             body=str(response.text),
             name="Response is empty",
